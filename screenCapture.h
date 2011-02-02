@@ -25,9 +25,6 @@
 #include <windows.h>
 #include <cv.h>
 
-using namespace std;
-using namespace cv;
-
 struct CaptureState
 {
     HWND window;
@@ -57,15 +54,15 @@ public:
 
     int width();
     int height();
-    void captureFrame(Mat& dst);
+    void captureFrame(cv::Mat& dst);
 };
 
-void getHwndsByProcessId(DWORD processId, vector<HWND>& list, bool visibleOnly = true);
-void getHwndsByProcessName(const wchar_t* processName, vector<HWND>& list, bool visibleOnly = true);
+void getHwndsByProcessId(DWORD processId, std::vector<HWND>& list, bool visibleOnly = true);
+void getHwndsByProcessName(const wchar_t* processName, std::vector<HWND>& list, bool visibleOnly = true);
 void revealWindow(HWND window);
 
 CaptureState* beginCaptureWindow(HWND window, bool screenshot = false);
 void endCaptureWindow(CaptureState*& cs);
-void captureFrame(const CaptureState* cs, Mat& dst);
+void captureFrame(const CaptureState* cs, cv::Mat& dst);
 
-void captureWindow(HWND window, Mat& dst, bool screenshot = false);
+void captureWindow(HWND window, cv::Mat& dst, bool screenshot = false);
